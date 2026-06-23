@@ -10,7 +10,7 @@ while (a <= 10) {
 // Do While Loop
 
 do {
-  console.log(a + num)
+    console.log(a + num)
     a++
 }
 while (a <= 100);

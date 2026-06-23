@@ -12,4 +12,4 @@ else{
     console.log('fail')
 }
 
-console.log('your average is', avg)
+console.log(`your average is ${avg}`)

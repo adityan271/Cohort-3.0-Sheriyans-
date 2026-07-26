@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flow — Productivity Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ============ LOADING SCREEN ============ -->
+    <div id="loading-screen">
+        <div class="loader-orb"></div>
+        <p class="loader-text">Loading Flow…</p>
+    </div>
+
+    <!-- ============ DYNAMIC BACKGROUND ============ -->
+    <div id="dynamic-bg" aria-hidden="true">
+        <div class="bg-aurora bg-aurora--one"></div>
+        <div class="bg-aurora bg-aurora--two"></div>
+        <div class="bg-noise"></div>
+    </div>
+
+    <!-- ============ TOAST CONTAINER ============ -->
+    <div id="toast-container" aria-live="polite"></div>
+
+    <!-- ============ CONFIRM MODAL ============ -->
+    <div id="confirm-modal" class="modal-overlay hidden">
+        <div class="modal-card glass">
+            <p id="confirm-message">Are you sure?</p>
+            <div class="modal-actions">
+                <button id="confirm-cancel" class="btn btn-ghost">Cancel</button>
+                <button id="confirm-ok" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ CONFETTI CANVAS ============ -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- ============ TOP BAR ============ -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <button id="hamburger" class="icon-btn hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="brand">
+                <span class="brand-mark">◈</span>
+                <span class="brand-name">Flow</span>
+            </div>
+        </div>
+
+        <div class="topbar-center" id="datetime-pill">
+            <span id="live-day">Monday</span>
+            <span class="dot">·</span>
+            <span id="live-date">12 July 2026</span>
+            <span class="dot">·</span>
+            <span id="live-time" class="mono">11:45:18 PM</span>
+        </div>
+
+        <div class="topbar-right">
+            <label class="theme-switch" title="Toggle theme">
+                <input type="checkbox" id="theme-toggle" />
+                <span class="theme-slider">
+                    <span class="theme-icon sun">☀</span>
+                    <span class="theme-icon moon">☾</span>
+                </span>
+            </label>
+        </div>
+    </header>
+
+    <!-- ============ MOBILE NAV DRAWER ============ -->
+    <nav id="mobile-drawer" class="mobile-drawer">
+        <ul>
+            <li data-target="todo">✓ Todo List</li>
+            <li data-target="planner">🕐 Daily Planner</li>
+            <li data-target="goals">🎯 Daily Goals</li>
+            <li data-target="quotes">💬 Motivation</li>
+            <li data-target="pomodoro">⏱ Pomodoro</li>
+            <li data-target="weather">☁ Weather</li>
+        </ul>
+    </nav>
+
+    <!-- ============ MAIN CONTAINER ============ -->
+    <main id="app">
+
+        <!-- ============ HOME DASHBOARD ============ -->
+        <section id="dashboard" class="view view-active">
+            <div class="dashboard-intro">
+                <h1>Good to see you.</h1>
+                <p>Here's your workspace for today. Pick a tool to get started.</p>
+            </div>
+
+            <div class="stats-row" id="stats-row">
+                <div class="stat-card glass">
+                    <span class="stat-value" id="stat-tasks-open">0</span>
+                    <span class="stat-label">Tasks open</span>
+                </div>
+                <div class="stat-card glass">
+                    <span class="stat-value" id="stat-tasks-done">0</span>
+                    <span class="stat-label">Tasks done</span>
+                </div>
+                <div class="stat-card glass">
+                    <span class="stat-value" id="stat-goals">0/0</span>
+                    <span class="stat-label">Goals hit</span>
+                </div>
+                <div class="stat-card glass">
+                    <span class="stat-value" id="stat-streak">0</span>
+                    <span class="stat-label">Focus sessions</span>
+                </div>
+            </div>
+
+            <div class="card-grid">
+
+                <article class="feature-card glass" data-target="todo" tabindex="0">
+                    <div class="feature-icon">✓</div>
+                    <h3>Todo List</h3>
+                    <p>Capture tasks, mark them done, keep what matters in view.</p>
+                </article>
+
+                <article class="feature-card glass" data-target="planner" tabindex="0">
+                    <div class="feature-icon">🕐</div>
+                    <h3>Daily Planner</h3>
+                    <p>Block out your day hour by hour, from 6 AM to midnight.</p>
+                </article>
+
+                <article class="feature-card glass" data-target="goals" tabindex="0">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Daily Goals</h3>
+                    <p>Set the few things that would make today count.</p>
+                </article>
+
+                <article class="feature-card glass" data-target="quotes" tabindex="0">
+                    <div class="feature-icon">💬</div>
+                    <h3>Motivation</h3>
+                    <p>A quiet nudge, whenever you need one.</p>
+                </article>
+
+                <article class="feature-card glass" data-target="pomodoro" tabindex="0">
+                    <div class="feature-icon">⏱</div>
+                    <h3>Pomodoro Timer</h3>
+                    <p>Focused sprints, honest breaks.</p>
+                </article>
+
+                <article class="feature-card glass" data-target="weather" tabindex="0">
+                    <div class="feature-icon">☁</div>
+                    <h3>Weather</h3>
+                    <p>Know what's outside before you step out.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ============ FEATURE: TODO LIST ============ -->
+        <section id="todo" class="view feature-view">
+            <div class="feature-header">
+                <button class="back-btn" data-back>← Back</button>
+                <h2>Todo List</h2>
+            </div>
+
+            <div class="feature-body">
+                <form id="todo-form" class="todo-form">
+                    <input type="text" id="todo-input" placeholder="What needs doing? (press N to focus)"
+                        autocomplete="off" />
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </form>
+
+                <div class="todo-toolbar">
+                    <input type="search" id="todo-search" placeholder="Search tasks…" />
+                    <div class="filter-group" id="todo-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                        <button class="filter-btn" data-filter="important">Important</button>
+                    </div>
+                </div>
+
+                <ul id="todo-list" class="todo-list"></ul>
+
+                <div id="todo-empty" class="empty-state hidden">
+                    <div class="empty-icon">🗒</div>
+                    <p>Nothing here yet. Add your first task above.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FEATURE: DAILY PLANNER ============ -->
+        <section id="planner" class="view feature-view">
+            <div class="feature-header">
+                <button class="back-btn" data-back>← Back</button>
+                <h2>Daily Planner</h2>
+                <span class="autosave-indicator" id="planner-autosave">All changes saved</span>
+            </div>
+            <div class="feature-body">
+                <div id="planner-list" class="planner-list"></div>
+            </div>
+        </section>
+
+        <!-- ============ FEATURE: DAILY GOALS ============ -->
+        <section id="goals" class="view feature-view">
+            <div class="feature-header">
+                <button class="back-btn" data-back>← Back</button>
+                <h2>Daily Goals</h2>
+            </div>
+            <div class="feature-body">
+                <form id="goal-form" class="todo-form">
+                    <input type="text" id="goal-input" placeholder="Add a goal for today…" autocomplete="off" />
+                    <button type="submit" class="btn btn-primary">Add Goal</button>
+                </form>
+
+                <div class="goal-progress-wrap glass">
+                    <div class="goal-progress-text">
+                        Completed: <strong id="goal-count">0 / 0</strong> Goals
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="goal-progress-fill"></div>
+                    </div>
+                </div>
+
+                <ul id="goal-list" class="todo-list"></ul>
+
+                <div id="goal-empty" class="empty-state hidden">
+                    <div class="empty-icon">🎯</div>
+                    <p>No goals yet. What would make today a win?</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FEATURE: MOTIVATION QUOTES ============ -->
+        <section id="quotes" class="view feature-view">
+            <div class="feature-header">
+                <button class="back-btn" data-back>← Back</button>
+                <h2>Motivation</h2>
+            </div>
+            <div class="feature-body feature-body--centered">
+                <div class="quote-card glass">
+                    <div id="quote-loading" class="quote-spinner hidden"></div>
+                    <blockquote id="quote-text" class="quote-text"></blockquote>
+                    <p id="quote-author" class="quote-author"></p>
+                    <p id="quote-error" class="quote-error hidden">kev.jsx</p>
+                    <button id="quote-next" class="btn btn-primary">Next Quote</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FEATURE: POMODORO TIMER ============ -->
+        <section id="pomodoro" class="view feature-view">
+            <div class="feature-header">
+                <button class="back-btn" data-back>← Back</button>
+                <h2>Pomodoro Timer</h2>
+            </div>
+            <div class="feature-body feature-body--centered">
+                <div class="pomodoro-card glass">
+                    <div class="pomodoro-mode" id="pomodoro-mode">Focus Session</div>
+                    <div class="pomodoro-ring-wrap">
+                        <svg class="pomodoro-ring" viewBox="0 0 200 200">
+                            <circle class="ring-track" cx="100" cy="100" r="90"></circle>
+                            <circle class="ring-progress" id="ring-progress" cx="100" cy="100" r="90"></circle>
+                        </svg>
+                        <div class="pomodoro-display mono" id="pomodoro-display">25:00</div>
+                    </div>
+                    <div class="pomodoro-controls">
+                        <button id="pomodoro-start" class="btn btn-primary">Start</button>
+                        <button id="pomodoro-pause" class="btn btn-ghost" disabled>Pause</button>
+                        <button id="pomodoro-reset" class="btn btn-ghost">Reset</button>
+                    </div>
+                    <div class="pomodoro-lengths">
+                        <button class="length-btn active" data-mins="25">25 min</button>
+                        <button class="length-btn" data-mins="15">15 min</button>
+                        <button class="length-btn" data-mins="5">5 min</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FEATURE: WEATHER WIDGET ============ -->
+        <section id="weather" class="view feature-view">
+            <div class="feature-header">
+                <button class="back-btn" data-back>← Back</button>
+                <h2>Weather</h2>
+            </div>
+            <div class="feature-body feature-body--centered">
+                <div class="weather-card glass">
+                    <div id="weather-loading" class="quote-spinner"></div>
+                    <div id="weather-content" class="weather-content hidden">
+                        <div class="weather-icon" id="weather-icon">☀</div>
+                        <h3 id="weather-city">—</h3>
+                        <div class="weather-temp" id="weather-temp">—°</div>
+                        <div class="weather-grid">
+                            <div><span>Feels like</span><strong id="weather-feels">—°</strong></div>
+                            <div><span>Humidity</span><strong id="weather-humidity">—%</strong></div>
+                            <div><span>Wind</span><strong id="weather-wind">— km/h</strong></div>
+                        </div>
+                    </div>
+                    <p id="weather-error" class="quote-error hidden">Couldn't load weather right now.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ FLOATING ACTION BUTTON ============ -->
+    <button id="fab" class="fab" title="Quick add task">+</button>
+
+    <!-- ============ HIDDEN AUDIO FOR TIMER ============ -->
+    <audio id="timer-sound" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

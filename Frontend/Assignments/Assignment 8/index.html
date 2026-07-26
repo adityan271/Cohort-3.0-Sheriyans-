@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>FinTrack Pro</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="loginScreen">
+        <div class="passbook">
+            <div class="passbook-mark">FinTrack Pro</div>
+            <div class="passbook-tag">Account access</div>
+            <form id="loginForm">
+                <div class="field">
+                    <label for="loginUsername">Account name</label>
+                    <input type="text" id="loginUsername" placeholder="e.g. alex" autocomplete="username" required />
+                </div>
+                <div class="field">
+                    <label for="loginPin">4-digit PIN</label>
+                    <input type="password" id="loginPin" placeholder="••••" inputmode="numeric" maxlength="4"
+                        autocomplete="current-password" required />
+                </div>
+                <div class="passbook-error" id="loginError"></div>
+                <button type="submit" class="passbook-submit" id="loginSubmit">
+                    Continue
+                </button>
+            </form>
+            <div class="passbook-hint">
+                New account name → creates a fresh ledger with that PIN.<br />Existing
+                name → enter its matching PIN to open it.
+            </div>
+        </div>
+    </div>
+
+    <div id="appScreen">
+        <div class="wrap">
+            <div class="topbar">
+                <div class="brand">
+                    <span class="mark">FinTrack Pro</span>
+                    <span class="sub" id="greeting">Ledger</span>
+                </div>
+                <div class="topbar-actions">
+                    <button class="text-btn" id="logoutBtn" title="Log out">
+                        Log out
+                    </button>
+                    <button class="icon-btn" id="themeToggle" title="Toggle dark / light" aria-label="Toggle theme">
+                        ◐
+                    </button>
+                </div>
+            </div>
+
+            <div class="statement">
+                <div class="statement-row">
+                    <div class="balance-block">
+                        <div class="eyebrow">Current balance</div>
+                        <div class="balance-num" id="balanceNum">0.00</div>
+                    </div>
+                    <div class="currency-picker">
+                        <select id="currencySelect">
+                            <option value="USD">$ USD</option>
+                            <option value="EUR">€ EUR</option>
+                            <option value="GBP">£ GBP</option>
+                            <option value="INR">₹ INR</option>
+                            <option value="JPY">¥ JPY</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="stat-pair">
+                    <div class="stat income">
+                        <div class="label">Total income</div>
+                        <div class="val" id="incomeVal">0.00</div>
+                    </div>
+                    <div class="stat expense">
+                        <div class="label">Total expense</div>
+                        <div class="val" id="expenseVal">0.00</div>
+                    </div>
+                </div>
+                <div class="perf"></div>
+            </div>
+            <div class="chart-card">
+                <div class="eyebrow">Cash flow, last 7 entries</div>
+                <div id="chartHolder"></div>
+            </div>
+
+            <div class="entry-card">
+                <h2 class="entry-title">Add a transaction</h2>
+                <div class="entry-grid">
+                    <div class="type-toggle">
+                        <button type="button" id="typeIncomeBtn" class="active income">
+                            ＋ Income
+                        </button>
+                        <button type="button" id="typeExpenseBtn" class="expense">
+                            － Expense
+                        </button>
+                    </div>
+                    <div class="field full">
+                        <label for="descInput">Description</label>
+                        <input type="text" id="descInput" placeholder="e.g. Freelance payment, Groceries" />
+                    </div>
+                    <div class="field">
+                        <label for="amountInput">Amount</label>
+                        <input type="number" id="amountInput" placeholder="0.00" step="0.01" min="0" />
+                    </div>
+                    <div class="field">
+                        <label for="categoryInput">Category</label>
+                        <input type="text" id="categoryInput" placeholder="e.g. Food, Salary" />
+                    </div>
+                    <button class="add-btn" id="addBtn">Add transaction</button>
+                </div>
+            </div>
+
+            <div class="ledger-card">
+                <div class="ledger-head">
+                    <h2 class="ledger-title">Transaction history</h2>
+                    <div class="filters">
+                        <button class="active" data-filter="all">All</button>
+                        <button data-filter="income">Income</button>
+                        <button data-filter="expense">Expense</button>
+                    </div>
+                </div>
+                <div id="txList"></div>
+            </div>
+
+            <div class="settings-card">
+                <h2 class="entry-title">Profile settings</h2>
+                <div class="settings-grid">
+                    <div class="field">
+                        <label for="nameInput">Display name</label>
+                        <input type="text" id="nameInput" placeholder="e.g. Alex" />
+                    </div>
+                    <div class="field">
+                        <label for="prefCurrency">Preferred currency</label>
+                        <select id="prefCurrency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="INR">INR</option>
+                            <option value="JPY">JPY</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="reset-row">
+                    <p>
+                        Clear every saved transaction and preference for this account.
+                        This cannot be undone.
+                    </p>
+                    <button class="reset-btn" id="resetBtn">Reset all data</button>
+                </div>
+            </div>
+
+            <div class="footnote" id="footnote">
+                Signed in as <span id="footAccount"></span> — data is saved to your
+                Claude account.
+            </div>
+        </div>
+    </div>
+
+ 
+    <script src="script.js"></script>
+</body>
+
+</html>

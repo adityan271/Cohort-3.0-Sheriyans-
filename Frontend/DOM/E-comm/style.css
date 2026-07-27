@@ -9,3 +9,127 @@ body {
     height: 100%;
     width: 100%;
 }
+
+main {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(155, 168, 224, 0.792);
+    padding: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+nav {
+    margin-bottom: 20px;
+    padding: 20px;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(98, 98, 246);
+    color: white;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.products {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap;
+
+}
+
+.product-card {
+    padding: 10px;
+    height: 40%;
+    width: 20%;
+    border-radius: 10px;
+    border: 1px solid gray;
+    background-color: #fff;
+    box-shadow: 3px 0px 20px rgb(75, 60, 60);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.img {
+    height: 60%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+#update {
+    background-color: darkgoldenrod;
+    color: white;
+}
+
+#delete {
+    background-color: darkred;
+    color: white;
+}
+
+
+.form {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.597);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+
+}
+
+input {
+    padding: 10px;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.form .top{
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+    color: white;
+    font-size: 20px;
+}

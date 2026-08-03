@@ -1,12 +1,21 @@
 import React, { useRef, useState } from "react";
 
 const Form = () => {
+  const [products, setProducts] = useState({});
   let formRef = useRef({});
   console.log(formRef);
 
   const handleChange = (e) => {
-    e.preventDeafault();
-    console.log(formRef.current.productName.value)
+    e.preventDefault();
+
+    let obj = {
+      pName: formRef.current.productName.value,
+      price: formRef.current.price.value,
+      category: formRef.current.category.value,
+      image: formRef.current.image.value,
+    };
+
+    setProducts(obj);
   };
   return (
     <div className="w-80 bg-white ">
@@ -43,6 +52,11 @@ const Form = () => {
         />
         <button className="p-2 bg-blue-600 text-white rounded ">Create</button>
       </form>
+
+      <h1>{products.pName}</h1>
+      <h1>{products.price}</h1>
+      <h1>{products.category}</h1>
+      <h1>{products.image}</h1>
     </div>
   );
 };

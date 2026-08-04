@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <div className="p-3 h-screen flex flex-col gap-4">
-      <Navbar />
+      <Navbar setToggle={setToggle} />
 
       {toggle ? (
         <div className="flex">

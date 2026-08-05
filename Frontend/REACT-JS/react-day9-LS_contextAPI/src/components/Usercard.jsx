@@ -1,6 +1,6 @@
 import React, { use } from "react";
 
-const Usercard = ({ users }) => {
+const Usercard = ({ users, setToggle, deleteUser, ind }) => {
   return (
     <div className="p-4 border border-white rounded flex flex-col gap-2 bg-black">
       <div className="h-40 w-50">
@@ -19,7 +19,9 @@ const Usercard = ({ users }) => {
         <button className="bg-yellow-700 text-white py-2 px-3 rounded">
           Update
         </button>
-        <button className="bg-red-700 text-white py-2 px-3 rounded">
+        <button
+        onClick={()=> deleteUser(ind)}
+         className="bg-red-700 text-white py-2 px-3 rounded">
           Delete
         </button>
       </div>

@@ -9,6 +9,8 @@ const App = () => {
     return JSON.parse(localStorage.getItem("users")) || [];
   });
 
+  const [updatedData, setUpdatedData] = useState(null)
+
   const deleteUser = (id) => {
     let filterUser = users.filter((val, index) => {
       return index === id;
@@ -27,6 +29,7 @@ const App = () => {
           {users.map((elem, index) => {
             return (
               <Usercard
+              setUpdatedData={setUpdatedData}
                 ind={index}
                 deleteUser={deleteUser}
                 key={index}
@@ -38,7 +41,7 @@ const App = () => {
         </div>
       ) : (
         <div className=" h-{70%} flex justify-center items-center">
-          <Form setUsers={setUsers} setToggle={setToggle} users={users} />
+          <Form updatedData={updatedData} setUsers={setUsers} setToggle={setToggle} users={users} />
         </div>
       )}
     </div>

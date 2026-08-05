@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const Form = ({ setUsers, setToggle, users }) => {
+const Form = ({ setUsers, setToggle, users, updatedData }) => {
   let {
     register,
     handleSubmit,
@@ -9,6 +9,7 @@ const Form = ({ setUsers, setToggle, users }) => {
     formState: { errors },
   } = useForm({
     mode: "onChange",
+    defaultValues: updatedData,
   });
 
   let formSubmit = (data) => {

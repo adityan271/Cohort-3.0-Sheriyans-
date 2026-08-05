@@ -21,7 +21,7 @@ const App = () => {
         </div>
       ) : (
         <div className=" h-{70%} flex justify-center items-center">
-          <Form setUsers={setUsers} setToggle={setToggle} />
+          <Form setUsers={setUsers} setToggle={setToggle} users={users} />
         </div>
       )}
     </div>

@@ -4,10 +4,7 @@ import Usercard from "./components/Usercard";
 import Form from "./components/Form";
 
 const App = () => {
-  let obj = {
-    name: "Aditya",
-    age: 19,
-  };
+  let obj = {};
 
   localStorage.setItem("user", JSON.stringify(obj));
 
@@ -21,6 +18,8 @@ const App = () => {
     return JSON.parse(localStorage.getItem("users")) || [];
     // map is not applied on null so Logical OR a blank Array
   });
+
+  const [updatedUser, setUpdatedUser] = useState(null);
 
   // Delete user code
   const deleteUser = (id) => {
@@ -51,7 +50,14 @@ const App = () => {
         </div>
       ) : (
         <div className=" h-{70%} flex justify-center items-center">
-          <Form users={users} setUsers={setUsers} setToggle={setToggle} />
+          <Form
+            updatedUser={updatedUser}
+            setUpdatedUser={setUpdatedUser}
+            setToggle={setToggle}
+            users={users}
+            setUsers={setUsers}
+            setToggle={setToggle}
+          />
         </div>
       )}
     </div>

@@ -4,6 +4,13 @@ import Usercard from "./components/Usercard";
 import Form from "./components/Form";
 
 const App = () => {
+  localStorage.setItem("name", "Aditya");
+  localStorage.setItem("age", "19");
+  localStorage.setItem("address", "Khetia");
+
+  let naam = localStorage.getItem("name")
+  console.log(naam)
+
   const [toggle, setToggle] = useState(false);
   const [users, setUsers] = useState([]);
 
@@ -13,11 +20,9 @@ const App = () => {
 
       {toggle ? (
         <div className="flex gap-4">
-          {
-            users.map((elem)=>{
-              return <Usercard users={elem}/>
-            })
-          }
+          {users.map((elem) => {
+            return <Usercard users={elem} />;
+          })}
         </div>
       ) : (
         <div className=" h-{70%} flex justify-center items-center">

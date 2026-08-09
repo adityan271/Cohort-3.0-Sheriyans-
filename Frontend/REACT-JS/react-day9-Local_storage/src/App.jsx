@@ -16,7 +16,10 @@ const App = () => {
   console.log(res);
 
   const [toggle, setToggle] = useState(false);
-  const [users, setUsers] = useState([]);
+  
+  const [users, setUsers] = useState(() => {
+    return JSON.parse(localStorage.getItem("users")) || []; // map is not applied on null so Logical OR a blank Array
+  });
 
   return (
     <div className="p-3 h-screen flex flex-col gap-4">
@@ -24,8 +27,8 @@ const App = () => {
 
       {toggle ? (
         <div className="flex gap-4">
-          {users.map((elem) => {
-            return <Usercard users={elem} />;
+          {users.map((elem, index) => {
+            return <Usercard key={index} users={elem} />;
           })}
         </div>
       ) : (

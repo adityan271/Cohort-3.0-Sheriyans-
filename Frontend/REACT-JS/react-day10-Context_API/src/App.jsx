@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import ProdcutCard from "./components/ProdcutCard";
 import Navbar from "./components/Navbar";
+import Cart from "./components/Cart";
 
 const App = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
   let product = [
     {
       id: 1,
@@ -278,12 +281,19 @@ const App = () => {
 
   return (
     <div className="h-screen p-4 flex flex-col gap-4">
-      <Navbar />
-      <div className="grid grid-cols-5 p-4">
-        {product.map((val) => {
-          return <ProdcutCard product={val} />;
-        })}
-      </div>
+      <Navbar setIsCartOpen={setIsCartOpen} />
+
+      {isCartOpen ? (
+        <div>
+          <Cart />
+        </div>
+      ) : (
+        <div className="grid grid-cols-5 p-4">
+          {product.map((val) => {
+            return <ProdcutCard product={val} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };

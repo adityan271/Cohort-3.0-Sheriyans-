@@ -1,7 +1,12 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-const MyStore = createContext();
+//export here
+export const MyStore = createContext();
 
-export const ContextProvide = ({ children }) => {
-  return <MyStore.Provider>{children}</MyStore.Provider>;
+export const ContextProvider = ({ children }) => {
+  //code here
+  const [centralData, setCentralData] = useState("Jai BABA ki ");
+
+  //value is used for drilling
+  return <MyStore.Provider value={centralData}>{children}</MyStore.Provider>;
 };

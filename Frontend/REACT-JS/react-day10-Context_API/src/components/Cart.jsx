@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MyStore } from "../context/MyContext";
 
 const Cart = ({ cartItems }) => {
   // Calculate total price
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+
+  useContext(MyStore);
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-8 md:px-10">

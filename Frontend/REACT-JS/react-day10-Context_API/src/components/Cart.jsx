@@ -17,7 +17,7 @@ const Cart = ({ cartItems }) => {
 
         {/* Empty Cart */}
         {cartItems.length === 0 ? (
-          <div className="mt-10 flex min-h-[400px] flex-col items-center justify-center rounded-2xl bg-white shadow-sm">
+          <div className="mt-10 flex min-h-100 flex-col items-center justify-center rounded-2xl bg-white shadow-sm">
             <div className="text-6xl">🛒</div>
 
             <h2 className="mt-5 text-2xl font-bold text-gray-800">

@@ -1,10 +1,10 @@
 import { createContext, useState } from "react";
 
 //Consumer
- export const MyStore = createContext();
+export const MyStore = createContext();
 
 //Provider
- export const ContextProvider = ({ children }) => {
+export const ContextProvider = ({ children }) => {
   const [count, setCount] = useState(0);
 
   return (

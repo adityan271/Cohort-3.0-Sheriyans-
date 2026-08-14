@@ -5,7 +5,7 @@ import ProductCard from "./components/ProdcutCard";
 import CartScreen from "./pages/CartScreen";
 import { MyStore } from "./context/MyContext";
 const App = () => {
-  let { isCartOpen } = useContext(MyStore);
+  let { isCartOpen, cartItems } = useContext(MyStore);
 
   const [productsData, setProductsData] = useState([]);
 
@@ -33,13 +33,9 @@ const App = () => {
       ) : (
         <div className="grid grid-cols-4 gap-4">
           {productsData.map((elem) => {
-            return (
-              <ProductCard
-                key={elem.id}
-                product={elem}
-              
-              />
-            );
+            let isInCart = cartItems.find((val) => val.id === elem.id);
+            
+            return <ProductCard key={elem.id} product={elem} isInCart={isInCart} />;
           })}
         </div>
       )}

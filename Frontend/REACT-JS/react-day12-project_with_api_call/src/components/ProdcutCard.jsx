@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { MyStore } from "../context/MyContext";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, isInCart }) => {
   let { setCartItems } = useContext(MyStore);
 
   let addToCart = () => {
-    setCartItems((prev) => [...prev, product]);
+    setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
     alert("product Added into cart");
   };
   return (
@@ -56,12 +56,20 @@ const ProductCard = ({ product }) => {
             <p className="text-2xl font-bold text-gray-900">${product.price}</p>
           </div>
 
-          <button
-            onClick={addToCart}
-            className="rounded-xl bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-800 active:scale-95"
-          >
-            Add to Cart
-          </button>
+          {isInCart ? (
+            <button className=" w-full rounded-xl bg-red-700 m-2    text-white">
+              <span className="text-3xl"> - </span>
+              <span className="text-3xl"> 1 </span>
+              <span className="text-3xl"> + </span>
+            </button>
+          ) : (
+            <button
+              onClick={addToCart}
+              className="rounded-xl bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-800 active:scale-95"
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>

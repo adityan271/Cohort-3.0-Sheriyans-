@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product,setCartItems }) => {
   return (
     <div className="w-full max-w-sm  overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl">
       {/* Image */}

@@ -3,14 +3,22 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import { ContextProvider, MyStore } from "./context/MyContext";
+import axios from "axios";
 
 const App = () => {
   const [count, setCount] = useState(0);
   const [toggle, setToggle] = useState(true);
+  const [apiData, setApiData] = useState(null);
+  console.log("API Data", apiData);
+
+  let getData = async () => {
+    let res = await axios.get("https://fakestoreapi.com/products");
+    setApiData(res.data);
+  };
 
   useEffect(() => {
-    console.log("App  Rendring");
-  }, [toggle]);
+    getData();
+  }, []);
 
   return (
     <div>

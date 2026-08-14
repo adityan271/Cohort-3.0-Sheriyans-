@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const About = () => {
-  console.log("About Rendring...");
+  let interval = setInterval(() => {
+    console.log("Hey I am in ABout");
+  }, 1000);
+
+  useEffect(() => {
+    console.log("About rendring");
+
+    return () => {
+      clearInterval(interval);
+      console.log("Dead about");
+    };
+  }, []);
 
   return (
     <div>

@@ -6,7 +6,7 @@ import { ContextProvider, MyStore } from "./context/MyContext";
 
 const App = () => {
   const [count, setCount] = useState(0);
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     console.log("App  Rendring");
@@ -20,6 +20,8 @@ const App = () => {
       <button onClick={() => setToggle((prev) => !prev)}>
         Change Toggle state
       </button>
+
+      {toggle ? <Contact /> : <About />}
     </div>
   );
 };

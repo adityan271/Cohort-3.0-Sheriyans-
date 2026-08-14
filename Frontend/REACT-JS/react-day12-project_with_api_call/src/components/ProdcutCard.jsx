@@ -1,6 +1,13 @@
 import React, { useContext } from "react";
+import { MyStore } from "../context/MyContext";
 
-const ProductCard = ({ product,setCartItems }) => {
+const ProductCard = ({ product }) => {
+  let { setCartItems } = useContext(MyStore);
+
+  let addToCart = () => {
+    setCartItems((prev) => [...prev, product]);
+    alert("product Added into cart");
+  };
   return (
     <div className="w-full max-w-sm  overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl">
       {/* Image */}
@@ -50,7 +57,7 @@ const ProductCard = ({ product,setCartItems }) => {
           </div>
 
           <button
-            onClick={() => setCartItems((prev) => [...prev, product])}
+            onClick={addToCart}
             className="rounded-xl bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-800 active:scale-95"
           >
             Add to Cart

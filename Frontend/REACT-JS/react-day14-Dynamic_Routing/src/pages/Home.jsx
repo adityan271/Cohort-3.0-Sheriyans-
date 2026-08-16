@@ -14,7 +14,9 @@ const Home = () => {
     }
   };
 
-    getProductsData();
+useEffect(()=>{
+  getProductsData();
+},[])
 
 
   return (

@@ -1,8 +1,17 @@
+import { useNavigate } from "react-router";
+
 const ProductCard = ({ product }) => {
+  //dynamic routing
+  let navigate = useNavigate();
+
   return (
     <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       {/* Product Image */}
-      <div className="flex h-64 items-center justify-center bg-gray-50 p-6">
+      <div
+        // dynamic routing
+        onClick={() => navigate(`/detail/${product.id}`)}
+        className="flex h-64 items-center justify-center bg-gray-50 p-6"
+      >
         <img
           src={product.image}
           alt={product.title}

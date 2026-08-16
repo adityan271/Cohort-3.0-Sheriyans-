@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
         </span>
 
         {/* Title */}
-        <h2 className="min-h-[56px] line-clamp-2 text-lg font-bold leading-7 text-gray-900">
+        <h2 className="min-h-14 line-clamp-2 text-lg font-bold leading-7 text-gray-900">
           {product.title}
         </h2>
 

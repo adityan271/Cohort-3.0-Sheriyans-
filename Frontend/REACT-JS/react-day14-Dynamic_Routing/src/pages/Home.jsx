@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import { MyStore } from "../context/MyContext";
 
@@ -13,11 +13,15 @@ const Home = () => {
       console.log("Error in APi", error);
     }
   };
-  getProductsData();
+
+    getProductsData();
+
 
   return (
     <div>
-      <h1>Home page</h1>
+   {
+    productsData
+   }
     </div>
   );
 };

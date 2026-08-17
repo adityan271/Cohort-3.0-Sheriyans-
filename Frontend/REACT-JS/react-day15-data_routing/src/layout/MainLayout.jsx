@@ -2,12 +2,13 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router";
 
-const Home = () => {
+const MainLayout = () => {
   return (
     <div>
-      <h1>Home page</h1>
+      <Navbar />
+      <Outlet />
     </div>
   );
 };
 
-export default Home;
+export default MainLayout;

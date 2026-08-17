@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { Auth } from "../context/AuthContext";
 
 const RegisterPage = () => {
+  const { setRegisterUser, registerUser, setLoggedInUser } = useContext(Auth);
+
   let {
     register,
     reset,
@@ -11,7 +14,14 @@ const RegisterPage = () => {
   } = useForm();
 
   let formSubmit = (data) => {
-    console.log(data);
+    let arr = [...registerUser, data];
+    setRegisterUser(arr);
+    alert("user registered succesfully");
+    setLoggedInUser(data);
+    localStorage.setItem("loggedinUser", JSON.stringify(data));
+    localStorage.setItem("registeredUsers", JSON.stringify(arr));
+    navigate("/main");
+
     reset();
   };
 

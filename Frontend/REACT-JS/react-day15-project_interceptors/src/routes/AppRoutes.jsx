@@ -6,20 +6,27 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import MainLayout from "../layout/MainLayout";
 import ProtectedRoute from "../routes/ProtectedRoutes";
+import PublicRoute from "./PublicRoute";
 
 const AppRoutes = () => {
   let router = createBrowserRouter([
     {
       path: "/",
-      element: <AuthLayout />,
+      element: <PublicRoute />,
       children: [
         {
           path: "",
-          element: <LoginPage />,
-        },
-        {
-          path: "/register",
-          element: <RegisterPage />,
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "",
+              element: <LoginPage />,
+            },
+            {
+              path: "/register",
+              element: <RegisterPage />,
+            },
+          ],
         },
       ],
     },

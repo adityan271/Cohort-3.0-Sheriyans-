@@ -1,38 +1,10 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
-import { Auth } from "../context/AuthContext";
+import React from "react";
 import { toast } from "react-toastify";
+import { useAuth } from "../hooks/useAuthHook";
 
 const LoginPage = () => {
-  const { registerUser, loggedInUser, setLoggedInUser } = useContext(Auth);
+  let { navigate, register, handleSubmit, errors, loginFormSubmit } = useAuth();
 
-  let navigate = useNavigate();
-  let {
-    register,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  let formSubmit = (data) => {
-    console.log(data);
-    let user = registerUser.find((val) => {
-      return val.email === data.email && val.password === data.password;
-    });
-
-    if (!user) {
-      toast.error("user not found or invalid credentials");
-      reset();
-      return;
-    }
-    setLoggedInUser(user);
-    localStorage.setItem("loggedinUser", JSON.stringify(user));
-    toast.success("user loggedIn");
-    navigate("/main");
-
-    reset();
-  };
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 px-4">
       {/* Login Card */}
@@ -45,7 +17,7 @@ const LoginPage = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(loginFormSubmit)} className="space-y-5">
           {/* Email */}
           <div>
             <label className="mb-2 block text-sm font-semibold text-gray-700">

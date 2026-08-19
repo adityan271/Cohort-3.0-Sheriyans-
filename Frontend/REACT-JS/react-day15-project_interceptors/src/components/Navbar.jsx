@@ -1,7 +1,11 @@
-import React from "react";
-import { NavLink, useLocation } from "react-router";
+import React, { useContext } from "react";
+import { Navigate, NavLink, useLocation } from "react-router";
+import { Auth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { setLoggedInUser } = useContext(Auth);
+
   return (
     <div className="border-r border-gray-50 p-3 flex flex-col justify-between ">
       <div className="flex flex-col gap-10">
@@ -41,7 +45,14 @@ const Navbar = () => {
         </div>
       </div>
 
-      <button className="py-3 bg-red-600 text-white rounded cursor-pointer">
+      <button
+        onClick={() => {
+          localStorage.removeItem("loggedinUser");
+          toast.warn("user logged out");
+          setLoggedInUser(null);
+        }}
+        className="py-3 bg-red-600 text-white rounded cursor-pointer"
+      >
         Logout
       </button>
     </div>

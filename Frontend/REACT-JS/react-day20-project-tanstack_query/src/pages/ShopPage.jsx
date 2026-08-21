@@ -2,25 +2,20 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import ProductCardSkeleton from "../components/ProductCardSkeleton";
+import { getProductDataApi } from "../api/productsApi";
 
 const ShopPage = () => {
   const [productsData, setProductsData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  let getProductdata = async () => {
-    try {
-      let res = await axios.get("https://dummyjson.com/products");
-      console.log(res.data.products);
-      setProductsData(res.data.products);
-    } catch (error) {
-      console.log("error in api", error);
-    } finally {
-      setIsLoading(false);
-    }
+  const getData = async () => {
+    let data = await getProductDataApi();
+    setProductsData(data);
+    setIsLoading(false)
   };
 
   useEffect(() => {
-    getProductdata();
+    getData();
   }, []);
 
   return (

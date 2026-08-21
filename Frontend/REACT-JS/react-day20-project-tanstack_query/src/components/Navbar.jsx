@@ -1,5 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router";
+import { LogOut } from 'lucide-react';
+
+
+
 
 const Navbar = () => {
   return (
@@ -33,8 +37,9 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className="flex items-center gap-5">
-        <h1>Hey, dev</h1>
+        <h1>Hey, <strong className="text-yellow-600">Dev</strong></h1>
         <button>Cart</button>
+        <LogOut className="cursor-pointer" size={18}/>
       </div>
     </div>
   );

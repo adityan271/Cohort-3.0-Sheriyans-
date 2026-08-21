@@ -1,31 +1,21 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import ProductCard from "../components/ProductCard";
 import ProductCardSkeleton from "../components/ProductCardSkeleton";
-import { getProductDataApi } from "../api/productsApi";
+import { useProductsApi } from "../hooks/productHooks";
 
 const ShopPage = () => {
-  const [productsData, setProductsData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  let { isPending, data, error } = useProductsApi();
 
-  const getData = async () => {
-    let data = await getProductDataApi();
-    setProductsData(data);
-    setIsLoading(false)
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  if (error) return <h1>{error.message}</h1>;
 
   return (
     <div className="min-h-screen bg-black p-10">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {isLoading
+        {isPending
           ? Array.from({ length: 8 }).map((_, index) => (
               <ProductCardSkeleton key={index} />
             ))
-          : productsData.map((product) => (
+          : data.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
       </div>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>My Cosmic Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <canvas id="starfield"></canvas>
+
+    <header class="nav">
+        <div class="nav__logo">/cosmic.dev</div>
+        <nav class="nav__links">
+            <a href="#home" class="nav__link">Home</a>
+            <a href="#about" class="nav__link">About</a>
+            <a href="#projects" class="nav__link">Projects</a>
+            <a href="#contact" class="nav__link">Contact</a>
+        </nav>
+        <button class="nav__toggle" aria-label="Open menu">
+            <span></span><span></span>
+        </button>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="home" class="section section--hero">
+            <div class="hero__content reveal">
+                <p class="hero__eyebrow">Creative Developer</p>
+                <h1 class="hero__title">
+                    <span class="gradient-text">Hello,</span>
+                    <span class="hero__title-main">I’m Aditya Nath</span>
+                </h1>
+                <p class="hero__subtitle">
+                    Crafting playful web experiences with clean code, motion, and a touch of cosmic vibes.
+                </p>
+                <div class="hero__actions">
+                    <a href="#projects" class="btn btn--primary">View Work</a>
+                    <a href="#contact" class="btn btn--ghost">Let’s Talk</a>
+                </div>
+                <div class="hero__meta">
+                    <span>Front‑End · UI · Motion</span>
+                    <span>Available for freelance</span>
+                </div>
+            </div>
+
+            <div class="hero__visual reveal">
+                <div class="orbital">
+                    <div class="orbital__core"></div>
+                    <div class="orbital__ring orbital__ring--one"></div>
+                    <div class="orbital__ring orbital__ring--two"></div>
+                    <div class="orbital__ring orbital__ring--three"></div>
+                    <div class="orbital__tag">Portfolio<br />2025</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section">
+            <div class="section__heading reveal">
+                <h2>About</h2>
+                <p>A brief story about who you are and how you think.</p>
+            </div>
+            <div class="about__grid">
+                <div class="about__card glass reveal">
+                    <h3>Profile</h3>
+                    <p>
+                        Passionate developer focused on building smooth, fast, and delightful interfaces that feel
+                        alive.
+                    </p>
+                    <ul class="about__list">
+                        <li><span>Location</span><span>Your City</span></li>
+                        <li><span>Role</span><span>Front‑End Developer</span></li>
+                        <li><span>Experience</span><span>3+ years</span></li>
+                    </ul>
+                </div>
+
+                <div class="about__card glass reveal">
+                    <h3>Skills</h3>
+                    <div class="pill-row">
+                        <span class="pill">HTML5</span>
+                        <span class="pill">CSS3 / SASS</span>
+                        <span class="pill">JavaScript</span>
+                        <span class="pill">React</span>
+                        <span class="pill">GSAP / Framer Motion</span>
+                    </div>
+                    <div class="about__bars">
+                        <div class="bar">
+                            <span>UI Implementation</span>
+                            <div class="bar__track">
+                                <div class="bar__fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <span>Animations</span>
+                            <div class="bar__track">
+                                <div class="bar__fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <span>Performance</span>
+                            <div class="bar__track">
+                                <div class="bar__fill" data-width="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="section">
+            <div class="section__heading reveal">
+                <h2>Projects</h2>
+                <p>Selected work showcasing design, interaction, and engineering.</p>
+            </div>
+            <div class="projects__grid">
+                <article class="project-card glass reveal">
+                    <div class="project-card__badge">Featured</div>
+                    <h3>Nebula Dashboard</h3>
+                    <p>
+                        A responsive admin dashboard with dark-mode gradients, micro‑interactions, and real‑time charts.
+                    </p>
+                    <ul class="project-card__tags">
+                        <li>React</li>
+                        <li>Tailwind</li>
+                        <li>Chart.js</li>
+                    </ul>
+                    <div class="project-card__links">
+                        <a href="#" target="_blank">Live Demo</a>
+                        <a href="#" target="_blank">Code</a>
+                    </div>
+                </article>
+
+                <article class="project-card glass reveal">
+                    <h3>Orbit Studio Site</h3>
+                    <p>
+                        Landing page for a creative studio with scroll animations and layered glass panels.
+                    </p>
+                    <ul class="project-card__tags">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>GSAP</li>
+                    </ul>
+                    <div class="project-card__links">
+                        <a href="#" target="_blank">Live Demo</a>
+                        <a href="#" target="_blank">Code</a>
+                    </div>
+                </article>
+
+                <article class="project-card glass reveal">
+                    <h3>Minimal Portfolio</h3>
+                    <p>
+                        Clean one‑page portfolio optimized for performance and accessibility.
+                    </p>
+                    <ul class="project-card__tags">
+                        <li>Next.js</li>
+                        <li>Styled‑Components</li>
+                    </ul>
+                    <div class="project-card__links">
+                        <a href="#" target="_blank">Live Demo</a>
+                        <a href="#" target="_blank">Code</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section">
+            <div class="section__heading reveal">
+                <h2>Contact</h2>
+                <p>Got a project or idea? Let’s build something cosmic together.</p>
+            </div>
+            <div class="contact__grid">
+                <form class="contact__form glass reveal">
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" placeholder="Your Name" autocomplete="name" />
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
+                    </div>
+                    <div class="field">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" placeholder="Tell me about your project"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary">Send Message</button>
+                    <p class="contact__note">This is a demo form. Hook it to your backend or service.</p>
+                </form>
+
+                <div class="contact__info reveal">
+                    <div class="glass contact__card">
+                        <h3>Elsewhere</h3>
+                        <ul class="contact__links">
+                            <li><a href="#" target="_blank">GitHub</a></li>
+                            <li><a href="#" target="_blank">LinkedIn</a></li>
+                            <li><a href="#" target="_blank">Dribbble</a></li>
+                        </ul>
+                    </div>
+                    <div class="glass contact__card">
+                        <h3>Direct</h3>
+                        <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+                        <p>Currently open to remote roles and collaborations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> Your Name. Crafted with HTML, CSS & JS.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

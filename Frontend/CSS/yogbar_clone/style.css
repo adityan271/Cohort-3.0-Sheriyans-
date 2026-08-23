@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    height: 100vh;
+    width: 100vw;
+}
+
+nav {
+    height: 15vh;
+    width: 100%;
+    background-color: #e33675;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.one {
+    font-size: 25px;
+}
+
+.two img {
+    height: 90px;
+}
+
+.three {
+    font-size: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.page1 img {
+    height: 100%;
+    width: 100%;
+}
+
+.page2 {
+    height: 100vh;
+    width: 100%;
+    background-color: blue;
+}
+
+.moving-text {
+    background-color: rgba(32, 31, 31, 0.923);
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.moving-text::-webkit-scrollbar {
+    display: none;
+}
+
+.moving-text h1 {
+    display: inline-block;
+    margin-top: 25px;
+}
+
+.con {
+    height: 100px;
+    background-color: rgba(32, 31, 31, 0.923);
+    white-space: nowrap;
+    display: inline-block;
+    animation: move 12s linear infinite;
+}
+
+@keyframes move {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.page3 {
+    height: 100vh;
+    width: 100%;
+    background-color: red;
+}
